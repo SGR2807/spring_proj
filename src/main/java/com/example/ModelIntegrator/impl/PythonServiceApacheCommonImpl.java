@@ -10,6 +10,12 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 
+
+public static final String TENANT = "UKREW25";
+public static final String BASE = "UKG";
+public static final String CLIENT = "PRO";
+public static final String ALIAS = "PROUKG25"
+
 /**
  * Service class for making predictions using a Python script.
  */
@@ -46,5 +52,17 @@ public class PythonServiceApacheCommonImpl implements PythonService{
             e.printStackTrace();
         }
         return result;
+    }
+
+
+    @Override
+    public int FunctionCalls(String tenant){
+        int alpha = PythonServiceProcessBuilderImpl.predict(tenant);
+        int beta = PythonServiceProcessBuilderImpl.predict(tenant);
+        String TenantClientId = TENANT + CLIENT + BASE + ALIAS;
+        int ans = null;
+
+        return ans.getValue() + alpha + beta;
+        
     }
 }
